@@ -27,10 +27,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCalculator, onOpenChecklist })
                 </span>
               </div>
 
-              {/* Responsive Headline */}
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#152232] leading-[1.18] sm:leading-[1.15]">
-                Clear accounting. <br className="hidden sm:inline" />
-                <span className="font-normal text-[#2B3747]">Reliable financial support.</span>
+              {/* Primary Headline Tagline */}
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight text-[#152232] leading-[1.2] sm:leading-[1.15]">
+                Simplifying Accounting, GST &amp; Tax Compliance – Anytime, Anywhere.
               </h1>
 
               {/* Concise Supporting Sentence */}
@@ -136,7 +135,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCalculator, onOpenChecklist })
               <div className="flex items-center gap-2">
                 <ShieldCheck size={16} className="text-[#152232] shrink-0" />
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-[#152232]">
-                  Client Confidentiality Guarantee
+                  Client Confidentiality &amp; Privacy
                 </span>
               </div>
               <p className="text-xs text-[#5B6574] leading-normal">
