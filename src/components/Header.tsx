@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, PhoneCall } from 'lucide-react';
+import { Menu, X, PhoneCall, User } from 'lucide-react';
 import { FIRM_DETAILS } from '../data/firmData';
 
-interface HeaderProps {
-  onOpenCalculator?: () => void;
-  onOpenChecklist?: () => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({ onOpenCalculator, onOpenChecklist }) => {
+export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -86,39 +81,30 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCalculator, onOpenChecklis
             })}
           </nav>
 
-          {/* Right Action Controls (Desktop) */}
+          {/* Right Auth Action Controls (Desktop) */}
           <div className="hidden lg:flex items-center gap-3">
-            {onOpenChecklist && (
-              <button
-                onClick={onOpenChecklist}
-                className="text-xs font-semibold uppercase tracking-wider text-[#4A525D] hover:text-[#152232] min-h-[40px] px-3 border border-[#D5D8DE] hover:border-[#152232] transition-all"
-              >
-                Doc Checklist
-              </button>
-            )}
-            {onOpenCalculator && (
-              <button
-                onClick={onOpenCalculator}
-                className="text-xs font-semibold uppercase tracking-wider text-[#152232] hover:bg-[#F0EFEA] min-h-[40px] px-3 border border-[#152232] transition-all"
-              >
-                Estimate Scope
-              </button>
-            )}
             <Link
-              to="/book-consultation"
+              to="/login?mode=login"
+              className="text-xs font-semibold uppercase tracking-wider text-[#152232] hover:bg-[#F0EFEA] min-h-[40px] flex items-center px-4 border border-[#152232] transition-all"
+            >
+              Sign In
+            </Link>
+            <Link
+              to="/login?mode=signup"
               className="text-xs font-semibold uppercase tracking-wider bg-[#152232] hover:bg-[#2B3747] text-white min-h-[40px] flex items-center px-4 transition-all focus:outline-none"
             >
-              Book Consultation
+              Create Account
             </Link>
           </div>
 
           {/* Mobile Navigation Controls */}
           <div className="flex md:hidden items-center gap-2">
             <Link
-              to="/book-consultation"
-              className="text-[11px] font-semibold uppercase tracking-wider bg-[#152232] text-white py-2 px-3 min-h-[38px] flex items-center shrink-0"
+              to="/login"
+              className="text-[11px] font-semibold uppercase tracking-wider bg-[#152232] text-white py-2 px-3 min-h-[38px] flex items-center gap-1.5 shrink-0"
             >
-              Book
+              <User size={13} />
+              <span>Login</span>
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -168,34 +154,19 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCalculator, onOpenChecklis
 
           <div className="pt-2 flex flex-col gap-2.5">
             <Link
-              to="/book-consultation"
+              to="/login?mode=signup"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full text-center text-xs font-semibold uppercase tracking-wider text-white bg-[#152232] min-h-[44px] border border-[#152232] flex items-center justify-center"
             >
-              Book Consultation
+              Create Account
             </Link>
-            {onOpenCalculator && (
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenCalculator();
-                }}
-                className="w-full text-center text-xs font-semibold uppercase tracking-wider text-[#152232] min-h-[44px] border border-[#152232] bg-white hover:bg-[#EFEFEA] flex items-center justify-center"
-              >
-                Estimate Scope
-              </button>
-            )}
-            {onOpenChecklist && (
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenChecklist();
-                }}
-                className="w-full text-center text-xs font-semibold uppercase tracking-wider text-[#4A525D] min-h-[44px] border border-[#D5D8DE] bg-white hover:bg-[#EFEFEA] flex items-center justify-center"
-              >
-                Document Checklist
-              </button>
-            )}
+            <Link
+              to="/login?mode=login"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full text-center text-xs font-semibold uppercase tracking-wider text-[#152232] min-h-[44px] border border-[#152232] bg-white hover:bg-[#EFEFEA] flex items-center justify-center"
+            >
+              Sign In to Account
+            </Link>
             <a
               href={`tel:${FIRM_DETAILS.phone}`}
               className="w-full flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#152232] min-h-[44px] border border-[#D5D8DE] bg-[#FAF9F6]"

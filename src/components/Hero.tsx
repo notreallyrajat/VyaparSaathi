@@ -1,13 +1,9 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, ShieldCheck, FileCheck2, Calculator } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShieldCheck, UserPlus } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { FIRM_DETAILS } from '../data/firmData';
 
-interface HeroProps {
-  onOpenCalculator?: () => void;
-  onOpenChecklist?: () => void;
-}
-
-export const Hero: React.FC<HeroProps> = ({ onOpenCalculator, onOpenChecklist }) => {
+export const Hero: React.FC = () => {
   return (
     <section className="relative pt-8 sm:pt-12 lg:pt-16 pb-12 sm:pb-16 lg:pb-24 border-b border-[#E2E5EA] bg-[#F9F8F5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,30 +37,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCalculator, onOpenChecklist })
             {/* CTAs & Touch-Friendly Control Group */}
             <div className="space-y-6 pt-2">
               <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4">
-                <a
-                  href="#contact"
+                <Link
+                  to="/login?mode=signup"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#152232] hover:bg-[#2B3747] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider min-h-[44px] px-6 border border-[#152232] transition-colors focus:outline-none"
                 >
-                  <span>Book a Consultation</span>
+                  <UserPlus size={16} />
+                  <span>Create Account</span>
                   <ArrowRight size={16} />
-                </a>
+                </Link>
 
-                <a
-                  href="#services"
+                <Link
+                  to="/services"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-[#EFEFEA] text-[#152232] text-xs sm:text-sm font-semibold uppercase tracking-wider min-h-[44px] px-6 border border-[#152232] transition-colors focus:outline-none"
                 >
                   <span>View Services</span>
-                </a>
-
-                {onOpenCalculator && (
-                  <button
-                    onClick={onOpenCalculator}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#4A525D] hover:text-[#152232] min-h-[44px] px-4 border border-[#D5D8DE] hover:border-[#152232] bg-white transition-colors"
-                  >
-                    <Calculator size={15} />
-                    <span>Estimate Scope</span>
-                  </button>
-                )}
+                </Link>
               </div>
 
               {/* Verified Practice Scope Tags */}
@@ -141,16 +128,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCalculator, onOpenChecklist })
               <p className="text-xs text-[#5B6574] leading-normal">
                 All client ledgers, bank statements, and business documentation are maintained under strict non-disclosure compliance.
               </p>
-              
-              {onOpenChecklist && (
-                <button
-                  onClick={onOpenChecklist}
-                  className="w-full mt-1 flex items-center justify-center gap-1.5 text-xs font-semibold text-[#152232] hover:underline pt-1 min-h-[36px]"
-                >
-                  <FileCheck2 size={13} />
-                  <span>View Onboarding Document Checklist →</span>
-                </button>
-              )}
             </div>
 
           </div>
@@ -160,4 +137,3 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCalculator, onOpenChecklist })
     </section>
   );
 };
-

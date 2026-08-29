@@ -2,7 +2,7 @@ import React from 'react';
 import { SERVICES_LIST } from '../data/firmData';
 import { ServiceItem } from '../types';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, FileUp, Calendar } from 'lucide-react';
+import { ArrowUpRight, FileUp } from 'lucide-react';
 
 export const ServicesPage: React.FC = () => {
   return (
@@ -75,11 +75,10 @@ export const ServicesPage: React.FC = () => {
                 {/* Direct Action Links */}
                 <div className="pt-4 border-t border-[#E2E5EA] flex flex-wrap items-center justify-between gap-3">
                   <Link
-                    to={`/book-consultation?service=${encodeURIComponent(service.name)}`}
+                    to={`/contact?service=${encodeURIComponent(service.name)}`}
                     className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#152232] hover:text-[#2B3747] min-h-[38px]"
                   >
-                    <Calendar size={14} />
-                    <span>Book Consultation</span>
+                    <span>Enquire Service</span>
                     <ArrowUpRight size={13} />
                   </Link>
 

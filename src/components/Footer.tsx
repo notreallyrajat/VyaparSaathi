@@ -77,8 +77,8 @@ export const Footer: React.FC = () => {
             </span>
             <ul className="space-y-2 text-xs text-[#D2D6DC]">
               <li>
-                <Link to="/book-consultation" className="hover:text-white transition-colors py-0.5 inline-block">
-                  Book Consultation
+                <Link to="/login" className="hover:text-white transition-colors py-0.5 inline-block">
+                  Client Portal / Login
                 </Link>
               </li>
               <li>

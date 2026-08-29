@@ -7,16 +7,12 @@ import { WhyChooseUs } from '../components/WhyChooseUs';
 import { Contact } from '../components/Contact';
 
 interface HomePageProps {
-  onOpenCalculator: () => void;
-  onOpenChecklist: () => void;
   onSelectServiceForInquiry: (serviceName: string) => void;
   prefilledService: string;
   prefilledScopeMessage: string;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({
-  onOpenCalculator,
-  onOpenChecklist,
   onSelectServiceForInquiry,
   prefilledService,
   prefilledScopeMessage,
@@ -24,15 +20,11 @@ export const HomePage: React.FC<HomePageProps> = ({
   return (
     <>
       {/* Hero Section */}
-      <Hero
-        onOpenCalculator={onOpenCalculator}
-        onOpenChecklist={onOpenChecklist}
-      />
+      <Hero />
 
       {/* Services Overview */}
       <Services
         onSelectServiceForInquiry={onSelectServiceForInquiry}
-        onOpenCalculator={onOpenCalculator}
       />
 
       {/* Engagement Process */}

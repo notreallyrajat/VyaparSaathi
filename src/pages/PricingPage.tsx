@@ -1,13 +1,9 @@
 import React from 'react';
 import { SERVICES_LIST } from '../data/firmData';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Info, Calculator, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Info, ShieldCheck } from 'lucide-react';
 
-interface PricingPageProps {
-  onOpenCalculator?: () => void;
-}
-
-export const PricingPage: React.FC<PricingPageProps> = ({ onOpenCalculator }) => {
+export const PricingPage: React.FC = () => {
   return (
     <div className="bg-[#F9F8F5] min-h-screen text-[#152232]">
       
@@ -40,16 +36,6 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenCalculator }) =>
                 <strong className="text-[#152232] font-semibold">Pricing Note:</strong> All fees below are indicative baseline estimates (`₹[Amount]`). Final professional fees are determined after evaluating business entity constitution, monthly invoice volume, and transaction complexity.
               </div>
             </div>
-
-            {onOpenCalculator && (
-              <button
-                onClick={onOpenCalculator}
-                className="shrink-0 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#152232] bg-[#FAF9F6] border border-[#152232] min-h-[40px] px-4 hover:bg-[#EFEFEA] transition-colors"
-              >
-                <Calculator size={14} />
-                <span>Estimate Scope</span>
-              </button>
-            )}
           </div>
 
           {/* 9 Services Fee Table */}
@@ -88,12 +74,12 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenCalculator }) =>
                     <span className="text-base font-mono font-bold text-[#152232]">
                       ₹[Amount]
                     </span>
-                    <span className="text-[10px] text-[#6C7582] block">or Price on Consultation</span>
+                    <span className="text-[10px] text-[#6C7582] block">or Price on Inquiry</span>
                   </div>
 
                   <div className="md:col-span-2 flex justify-start md:justify-end pt-2 md:pt-0">
                     <Link
-                      to={`/book-consultation?service=${encodeURIComponent(srv.name)}`}
+                      to="/contact"
                       className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-[#152232] hover:text-[#2B3747] border border-[#152232] min-h-[36px] px-3 transition-colors"
                     >
                       <span>Enquire</span>
@@ -132,7 +118,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenCalculator }) =>
                   </p>
                 </div>
                 <Link
-                  to="/book-consultation"
+                  to="/contact"
                   className="w-full text-center text-xs font-semibold uppercase tracking-wider text-[#152232] bg-[#FAF9F6] border border-[#152232] min-h-[40px] flex items-center justify-center hover:bg-[#EFEFEA]"
                 >
                   Request Quote
@@ -158,7 +144,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenCalculator }) =>
                   </p>
                 </div>
                 <Link
-                  to="/book-consultation"
+                  to="/contact"
                   className="w-full text-center text-xs font-semibold uppercase tracking-wider text-white bg-[#152232] min-h-[40px] flex items-center justify-center hover:bg-[#2B3747]"
                 >
                   Request Quote
@@ -172,14 +158,14 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onOpenCalculator }) =>
                   </span>
                   <h3 className="text-lg font-bold text-[#152232]">Corporate Retainer</h3>
                   <div className="text-2xl font-mono font-bold text-[#152232]">
-                    Price on Consultation
+                    Price on Inquiry
                   </div>
                   <p className="text-xs text-[#3D4653] leading-relaxed">
                     Full corporate accounting, multi-user ledger management, company compliance filings, and dedicated notice assistance.
                   </p>
                 </div>
                 <Link
-                  to="/book-consultation"
+                  to="/contact"
                   className="w-full text-center text-xs font-semibold uppercase tracking-wider text-[#152232] bg-[#FAF9F6] border border-[#152232] min-h-[40px] flex items-center justify-center hover:bg-[#EFEFEA]"
                 >
                   Request Quote

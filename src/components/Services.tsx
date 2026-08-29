@@ -1,16 +1,14 @@
 import React from 'react';
 import { SERVICES_LIST } from '../data/firmData';
 import { ServiceItem } from '../types';
-import { ArrowUpRight, Calculator } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface ServicesProps {
   onSelectServiceForInquiry?: (serviceName: string) => void;
-  onOpenCalculator?: () => void;
 }
 
 export const Services: React.FC<ServicesProps> = ({
   onSelectServiceForInquiry,
-  onOpenCalculator,
 }) => {
   return (
     <section id="services" className="py-12 sm:py-16 md:py-24 border-b border-[#E2E5EA] bg-[#F9F8F5]">
@@ -29,16 +27,6 @@ export const Services: React.FC<ServicesProps> = ({
               Professional accounting, tax and business compliance services.
             </p>
           </div>
-
-          {onOpenCalculator && (
-            <button
-              onClick={onOpenCalculator}
-              className="shrink-0 inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#152232] bg-white border border-[#152232] min-h-[42px] px-4 hover:bg-[#EFEFEA] transition-colors self-start md:self-auto"
-            >
-              <Calculator size={14} />
-              <span>Estimate Scope</span>
-            </button>
-          )}
         </div>
 
         {/* 9 Services Structured Editorial Layout */}

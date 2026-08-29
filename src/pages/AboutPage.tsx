@@ -175,17 +175,17 @@ export const AboutPage: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <ShieldCheck size={16} className="text-[#152232] shrink-0" />
                   <h3 className="text-xs font-bold uppercase tracking-wider text-[#152232]">
-                    Schedule Consultation
+                    Get in Touch
                   </h3>
                 </div>
                 <p className="text-xs text-[#3D4653] leading-relaxed">
-                  Discuss your business filing, GST compliance, or bookkeeping requirements directly with our consultants.
+                  Discuss your business filing, GST compliance, or bookkeeping requirements directly with our team.
                 </p>
                 <Link
-                  to="/book-consultation"
+                  to="/contact"
                   className="w-full inline-flex items-center justify-center gap-2 bg-[#152232] hover:bg-[#2B3747] text-white text-xs font-semibold uppercase tracking-wider min-h-[44px] px-6 border border-[#152232] transition-colors"
                 >
-                  <span>Book Consultation</span>
+                  <span>Contact Practice</span>
                   <ArrowRight size={15} />
                 </Link>
               </div>
