@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { Services } from './components/Services';
-import { FeeScopeCalculator } from './components/FeeScopeCalculator';
-import { Process } from './components/Process';
-import { About } from './components/About';
-import { WhyChooseUs } from './components/WhyChooseUs';
-import { DocChecklistModal } from './components/DocChecklistModal';
-import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { ScrollToTop } from './components/ScrollToTop';
+import { FeeScopeCalculator } from './components/FeeScopeCalculator';
+import { DocChecklistModal } from './components/DocChecklistModal';
+
+// Pages
+import { HomePage } from './pages/HomePage';
+import { AboutPage } from './pages/AboutPage';
+import { ServicesPage } from './pages/ServicesPage';
+import { PricingPage } from './pages/PricingPage';
+import { UploadDocumentsPage } from './pages/UploadDocumentsPage';
+import { BookConsultationPage } from './pages/BookConsultationPage';
+import { PaymentPage } from './pages/PaymentPage';
+import { BlogPage } from './pages/BlogPage';
+import { ContactPage } from './pages/ContactPage';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
+import { TermsPage } from './pages/TermsPage';
 
 export const App: React.FC = () => {
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
@@ -33,59 +42,84 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F9F8F5] text-[#152232] flex flex-col font-sans">
-      {/* Header */}
-      <Header
-        onOpenCalculator={() => setIsCalculatorOpen(true)}
-        onOpenChecklist={() => setIsChecklistOpen(true)}
-      />
-
-      {/* Main Content */}
-      <main className="grow">
-        {/* Hero Section */}
-        <Hero
+    <Router>
+      <ScrollToTop />
+      <div className="min-h-screen bg-[#F9F8F5] text-[#152232] flex flex-col font-sans">
+        
+        {/* Header - Connected to global routes while preserving exact visual appearance */}
+        <Header
           onOpenCalculator={() => setIsCalculatorOpen(true)}
           onOpenChecklist={() => setIsChecklistOpen(true)}
         />
 
-        {/* Services Overview */}
-        <Services
-          onSelectServiceForInquiry={handleSelectServiceForInquiry}
-          onOpenCalculator={() => setIsCalculatorOpen(true)}
+        {/* Main Content Router */}
+        <main className="grow">
+          <Routes>
+            {/* 1. Home Page (Locked & Unchanged design/sections) */}
+            <Route
+              path="/"
+              element={
+                <HomePage
+                  onOpenCalculator={() => setIsCalculatorOpen(true)}
+                  onOpenChecklist={() => setIsChecklistOpen(true)}
+                  onSelectServiceForInquiry={handleSelectServiceForInquiry}
+                  prefilledService={prefilledService}
+                  prefilledScopeMessage={prefilledScopeMessage}
+                />
+              }
+            />
+
+            {/* 2. About Us Page */}
+            <Route path="/about" element={<AboutPage />} />
+
+            {/* 3. Dedicated Services Page */}
+            <Route path="/services" element={<ServicesPage />} />
+
+            {/* 4. Pricing Page */}
+            <Route
+              path="/pricing"
+              element={<PricingPage onOpenCalculator={() => setIsCalculatorOpen(true)} />}
+            />
+
+            {/* 5. Upload Documents Page */}
+            <Route path="/upload-documents" element={<UploadDocumentsPage />} />
+
+            {/* 6. Book Consultation Page */}
+            <Route path="/book-consultation" element={<BookConsultationPage />} />
+
+            {/* 7. Payment Page */}
+            <Route path="/payment" element={<PaymentPage />} />
+
+            {/* 8. Blog Page */}
+            <Route path="/blog" element={<BlogPage />} />
+
+            {/* 9. Contact Us Page */}
+            <Route path="/contact" element={<ContactPage />} />
+
+            {/* 10. Privacy Policy Page */}
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+
+            {/* 11. Terms & Conditions Page */}
+            <Route path="/terms-and-conditions" element={<TermsPage />} />
+          </Routes>
+        </main>
+
+        {/* Footer - Shared layout containing links to all 11 pages */}
+        <Footer />
+
+        {/* Modals */}
+        <FeeScopeCalculator
+          isOpen={isCalculatorOpen}
+          onClose={() => setIsCalculatorOpen(false)}
+          onApplyScopeToContact={handleApplyScopeToContact}
         />
 
-        {/* Engagement Process */}
-        <Process />
-
-        {/* About & Credentials */}
-        <About />
-
-        {/* Why Choose Us */}
-        <WhyChooseUs />
-
-        {/* Lead Gen Contact Section */}
-        <Contact
-          prefilledService={prefilledService}
-          prefilledScopeMessage={prefilledScopeMessage}
+        <DocChecklistModal
+          isOpen={isChecklistOpen}
+          onClose={() => setIsChecklistOpen(false)}
         />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-
-      {/* Retainer Scope Calculator Modal */}
-      <FeeScopeCalculator
-        isOpen={isCalculatorOpen}
-        onClose={() => setIsCalculatorOpen(false)}
-        onApplyScopeToContact={handleApplyScopeToContact}
-      />
-
-      {/* Document Checklist Modal */}
-      <DocChecklistModal
-        isOpen={isChecklistOpen}
-        onClose={() => setIsChecklistOpen(false)}
-      />
-    </div>
+      </div>
+    </Router>
   );
 };
 

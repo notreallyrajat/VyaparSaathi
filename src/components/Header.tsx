@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, PhoneCall } from 'lucide-react';
 import { FIRM_DETAILS } from '../data/firmData';
 
@@ -10,6 +11,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ onOpenCalculator, onOpenChecklist }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,11 +32,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCalculator, onOpenChecklis
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: 'Services', href: '#services' },
-    { label: 'How We Help', href: '#process' },
-    { label: 'About', href: '#about' },
-    { label: 'Why Choose Us', href: '#why-us' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', path: '/' },
+    { label: 'About Us', path: '/about' },
+    { label: 'Services', path: '/services' },
+    { label: 'Pricing', path: '/pricing' },
+    { label: 'Blog', path: '/blog' },
+    { label: 'Contact Us', path: '/contact' },
   ];
 
   return (
@@ -49,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCalculator, onOpenChecklis
         <div className="flex items-center justify-between h-16 sm:h-20">
           
           {/* Left: Brand Identity */}
-          <a href="#" className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none shrink-0">
+          <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none shrink-0">
             <div className="w-9 h-9 sm:w-10 sm:h-10 bg-[#152232] text-white font-mono font-bold text-xs sm:text-sm flex items-center justify-center tracking-tighter border border-[#152232] shrink-0">
               VS
             </div>
@@ -61,19 +64,26 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCalculator, onOpenChecklis
                 {FIRM_DETAILS.tagline}
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-xs lg:text-sm font-medium text-[#3A424E]">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="hover:text-[#152232] transition-colors py-2 border-b-2 border-transparent hover:border-[#152232]"
-              >
-                {link.label}
-              </a>
-            ))}
+          <nav className="hidden md:flex items-center gap-5 lg:gap-7 text-xs lg:text-sm font-medium text-[#3A424E]">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.path;
+              return (
+                <Link
+                  key={link.label}
+                  to={link.path}
+                  className={`transition-colors py-2 border-b-2 ${
+                    isActive
+                      ? 'text-[#152232] border-[#152232] font-semibold'
+                      : 'border-transparent hover:text-[#152232] hover:border-[#152232]'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Right Action Controls (Desktop) */}
@@ -94,22 +104,22 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCalculator, onOpenChecklis
                 Estimate Scope
               </button>
             )}
-            <a
-              href="#contact"
+            <Link
+              to="/book-consultation"
               className="text-xs font-semibold uppercase tracking-wider bg-[#152232] hover:bg-[#2B3747] text-white min-h-[40px] flex items-center px-4 transition-all focus:outline-none"
             >
-              Book a Consultation
-            </a>
+              Book Consultation
+            </Link>
           </div>
 
           {/* Mobile Navigation Controls */}
           <div className="flex md:hidden items-center gap-2">
-            <a
-              href="#contact"
+            <Link
+              to="/book-consultation"
               className="text-[11px] font-semibold uppercase tracking-wider bg-[#152232] text-white py-2 px-3 min-h-[38px] flex items-center shrink-0"
             >
               Book
-            </a>
+            </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Navigation Menu'}
@@ -128,19 +138,42 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCalculator, onOpenChecklis
         <div className="md:hidden border-b border-[#E2E5EA] bg-[#FAF9F6] px-4 pt-3 pb-6 space-y-4 max-h-[calc(100dvh-4rem)] overflow-y-auto pt-safe pb-safe">
           <div className="flex flex-col divide-y divide-[#E2E5EA] font-medium text-sm text-[#3A424E]">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
                 className="py-3 text-[#152232] flex items-center justify-between hover:text-[#2B3747]"
               >
                 <span className="text-sm font-semibold">{link.label}</span>
                 <span className="text-xs text-[#6C7582] font-mono">→</span>
-              </a>
+              </Link>
             ))}
+            <Link
+              to="/upload-documents"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-3 text-[#152232] flex items-center justify-between hover:text-[#2B3747]"
+            >
+              <span className="text-sm font-semibold">Upload Documents</span>
+              <span className="text-xs text-[#6C7582] font-mono">→</span>
+            </Link>
+            <Link
+              to="/payment"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-3 text-[#152232] flex items-center justify-between hover:text-[#2B3747]"
+            >
+              <span className="text-sm font-semibold">Make Payment</span>
+              <span className="text-xs text-[#6C7582] font-mono">→</span>
+            </Link>
           </div>
 
           <div className="pt-2 flex flex-col gap-2.5">
+            <Link
+              to="/book-consultation"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full text-center text-xs font-semibold uppercase tracking-wider text-white bg-[#152232] min-h-[44px] border border-[#152232] flex items-center justify-center"
+            >
+              Book Consultation
+            </Link>
             {onOpenCalculator && (
               <button
                 onClick={() => {
@@ -176,4 +209,3 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCalculator, onOpenChecklis
     </header>
   );
 };
-
