@@ -17,6 +17,7 @@ import { ContactPage } from './pages/ContactPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
 import { PrivateLimitedRegistrationPage } from './pages/PrivateLimitedRegistrationPage';
+import { MonthlyCompliancePage } from './pages/MonthlyCompliancePage';
 
 export const App: React.FC = () => {
   const [prefilledService, setPrefilledService] = useState<string>('');
@@ -85,6 +86,9 @@ export const App: React.FC = () => {
 
             {/* 12. Private Limited Company Registration Page */}
             <Route path="/private-limited-company-registration" element={<PrivateLimitedRegistrationPage />} />
+
+            {/* 13. Regular Monthly Account & Compliances Page */}
+            <Route path="/monthly-accounting-compliance" element={<MonthlyCompliancePage />} />
           </Routes>
         </main>
 
