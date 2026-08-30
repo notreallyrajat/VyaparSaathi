@@ -54,9 +54,11 @@ export const LoginPage: React.FC = () => {
         {/* Brand Header */}
         <div className="text-center space-y-3 mb-8">
           <Link to="/" className="inline-flex items-center gap-2.5 group">
-            <div className="w-10 h-10 bg-[#152232] text-white font-mono font-bold text-sm flex items-center justify-center tracking-tighter border border-[#152232]">
-              VS
-            </div>
+            <img
+              src="/logo.png"
+              alt="Vyapar Saathi Logo"
+              className="w-10 h-10 object-contain shrink-0"
+            />
             <div className="text-left">
               <span className="text-lg font-bold tracking-tight text-[#152232] block leading-tight">
                 {FIRM_DETAILS.name}

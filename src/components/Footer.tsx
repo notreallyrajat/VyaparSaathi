@@ -13,9 +13,11 @@ export const Footer: React.FC = () => {
           {/* Brand & Description (4 Cols on Desktop) */}
           <div className="md:col-span-4 space-y-4">
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-8 h-8 bg-white text-[#152232] font-mono font-bold text-xs flex items-center justify-center shrink-0">
-                VS
-              </div>
+              <img
+                src="/logo.png"
+                alt="Vyapar Saathi Logo"
+                className="w-8 h-8 object-contain shrink-0 bg-white p-0.5"
+              />
               <div className="min-w-0">
                 <span className="text-base font-bold tracking-tight block truncate group-hover:text-[#D2D6DC] transition-colors">
                   {FIRM_DETAILS.name}

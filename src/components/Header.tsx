@@ -48,15 +48,14 @@ export const Header: React.FC = () => {
           
           {/* Left: Brand Identity */}
           <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none shrink-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 bg-[#152232] text-white font-mono font-bold text-xs sm:text-sm flex items-center justify-center tracking-tighter border border-[#152232] shrink-0">
-              VS
-            </div>
+            <img
+              src="/logo.png"
+              alt="Vyapar Saathi Logo"
+              className="w-9 h-9 sm:w-10 sm:h-10 object-contain shrink-0"
+            />
             <div className="min-w-0">
               <span className="text-base sm:text-lg font-bold tracking-tight text-[#152232] block leading-tight truncate group-hover:text-[#2B3747]">
                 {FIRM_DETAILS.name}
-              </span>
-              <span className="text-[10px] sm:text-[11px] font-medium uppercase tracking-widest text-[#5B6574] block truncate">
-                {FIRM_DETAILS.tagline}
               </span>
             </div>
           </Link>

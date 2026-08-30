@@ -21,18 +21,68 @@ export const SERVICES_LIST: ServiceItem[] = [
     number: '01',
     name: 'Income Tax Return (ITR) Filing',
     description: 'Preparation and filing of income tax returns for individuals and businesses.',
+    requiredDocuments: [
+      {
+        items: [
+          'PAN',
+          'Aadhaar',
+          'Form 16',
+          'AIS',
+          'Form 26AS',
+          'Bank Statement',
+          'Capital Gain Details',
+          'Home Loan Details',
+          'Investment Proofs',
+        ],
+      },
+    ],
   },
   {
     id: 'gst-filing',
     number: '02',
     name: 'GST Registration & Return Filing',
     description: 'GST registration and periodic return filing for eligible businesses.',
+    requiredDocuments: [
+      {
+        title: 'GST Registration',
+        items: [
+          'PAN',
+          'Aadhaar',
+          'Photograph',
+          'Business Address Proof',
+          'Electricity Bill',
+          'Rent Agreement (यदि लागू हो)',
+          'Bank Proof',
+        ],
+      },
+      {
+        title: 'GST Return',
+        items: [
+          'Sales Data',
+          'Purchase Data',
+          'E-way Bills',
+          'Previous Returns',
+          'Bank Details',
+        ],
+      },
+    ],
   },
   {
     id: 'accounting-bookkeeping',
     number: '03',
     name: 'Accounting & Bookkeeping',
     description: 'Routine ledger maintenance, transaction entry, and bank statement reconciliation.',
+    requiredDocuments: [
+      {
+        items: [
+          'Purchase Bills',
+          'Sales Bills',
+          'Bank Statements',
+          'Cash Book',
+          'Expense Bills',
+        ],
+      },
+    ],
   },
   {
     id: 'tds-filing',

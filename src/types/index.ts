@@ -1,9 +1,15 @@
+export interface ServiceDocumentGroup {
+  title?: string;
+  items: string[];
+}
+
 export interface ServiceItem {
   id: string;
   number: string;
   name: string;
   description: string;
   subTypes?: string[];
+  requiredDocuments?: ServiceDocumentGroup[];
 }
 
 export interface ProcessStep {

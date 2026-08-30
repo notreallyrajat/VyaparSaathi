@@ -70,6 +70,34 @@ export const ServicesPage: React.FC = () => {
                       </div>
                     </div>
                   )}
+
+                  {/* Required Documents */}
+                  {service.requiredDocuments && service.requiredDocuments.length > 0 && (
+                    <div className="pt-3 border-t border-[#E2E5EA] space-y-2">
+                      <span className="text-[11px] font-mono text-[#6C7582] uppercase block tracking-wider font-semibold">
+                        Required Documents
+                      </span>
+                      <div className="space-y-3">
+                        {service.requiredDocuments.map((group, idx) => (
+                          <div key={idx} className="space-y-1.5">
+                            {group.title && (
+                              <span className="text-xs font-semibold text-[#152232] block">
+                                {group.title}:
+                              </span>
+                            )}
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs text-[#3D4653]">
+                              {group.items.map((doc) => (
+                                <li key={doc} className="flex items-start gap-1.5">
+                                  <span className="text-[#6C7582] select-none">•</span>
+                                  <span>{doc}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Direct Action Links */}
