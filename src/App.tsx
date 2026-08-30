@@ -16,6 +16,7 @@ import { BlogPage } from './pages/BlogPage';
 import { ContactPage } from './pages/ContactPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsPage } from './pages/TermsPage';
+import { PrivateLimitedRegistrationPage } from './pages/PrivateLimitedRegistrationPage';
 
 export const App: React.FC = () => {
   const [prefilledService, setPrefilledService] = useState<string>('');
@@ -81,6 +82,9 @@ export const App: React.FC = () => {
 
             {/* 11. Terms & Conditions Page */}
             <Route path="/terms-and-conditions" element={<TermsPage />} />
+
+            {/* 12. Private Limited Company Registration Page */}
+            <Route path="/private-limited-company-registration" element={<PrivateLimitedRegistrationPage />} />
           </Routes>
         </main>
 
